@@ -1,0 +1,79 @@
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+#                                               💻Scavenger Hunt Messages💻
+#                                                   🔥Coded By Mike3132🔥
+#                                               💻Scavenger Hunt Messages💻
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+
+#✍✍✍✍ This file handles all messages for the plugin including the prefix.✍✍✍✍
+#✍✍✍✍ You can change anything here to be whatever custom stuff you want.✍✍✍✍
+#☠☠☠☠ DO NOT CHANGE THE "Messages:" line as this will break the plugin.☠☠☠☠
+#☠☠☠☠ ALL messages must have single quotes '' as seen in this default config.☠☠☠☠
+
+
+#Plugin prefix is sent before ALL messages in the plugin.
+Messages:
+  #Plugin prefix for all messages.
+  Prefix: '&6Scavenger &eHunt &7> '
+
+  #➳➳➳➳➳ Console Messages ➳➳➳➳➳
+  #Players only command
+  Player-Only: '&4ERROR: &cYou must be a player to use this command'
+
+
+  #♢♢♢♢♢ Admin Messages ♢♢♢♢♢
+  #Sent if you use commands from console (All commands are designed to be ran in game as the player)
+  Console-Not-Player: "&4ERROR: &cYou must be a player to use this command"
+
+  #Not enough command arguments when using /hunt
+  Not-Enough-Args: "&4ERROR: &cYou did not supply enough command arguments"
+
+  #If the player does not have permission to use the admin command for listing all heads in their current world
+  Admin-Head-List-Permission: "&4ERROR: &cYou do not have permission to list all heads in this world"
+
+  #If the player does not have permission to use the admin command for resetting another players head count
+  Admin-Head-Reset-Permission: "&4ERROR: &cYou do not have permission to reset other players heads"
+
+  #If the player does not have permission to enter admin mode they will be sent this message
+  No-Admin-Mode-Permission: "&4ERROR: &cYou do not have permission to enter admin mode"
+
+  #The message that is sent when the player enters admin mode
+  Admin-Mode-Activated: "&5Admin Mode: &2Activated"
+
+  #The message that is sent when the player enters admin mode
+  Admin-Mode-Deactivated: "&5Admin Mode: &4Deactivated"
+
+  #The message that is sent when an admin places a head in the world
+  Admin-Head-Place: "&eYou have added a head, &2The block and it's data has been saved to the world"
+
+  #The message that is sent to an admin when they break a head
+  Admin-Head-Break: "&3You have removed a head, &4The block and it's data have been removed from the world"
+
+  #The message that is sent when someone tries to break a head without being in admin mode
+  Head-Break-Not-Admin: "&4ERROR: &cYou must be in admin mode to break this head"
+
+  #The message that is sent if there is no heads loaded into the world
+  Admin-No-Heads: "&4ERROR: &cThere is no heads loaded in this world"
+
+  #The message that is sent if the target player is not found
+  Admin-Target-Not-Found: "&4ERROR: &cThis is not a valid player"
+
+
+  #➳➳➳➳➳ Player Messages ➳➳➳➳➳
+  #The message that is sent if the player does not have permission to use a command
+  Player-No-Permission-Message: "&4ERROR: &cYou do not have the correct permission to execute this command"
+
+  #This is sent to the player when they click on a scavenger hunt head
+  Player-Click-Message: "&2You have clicked a scavenger hunt head"
+
+  #This is sent to the player if they have already claimed the head
+  Player-Already-Claimed: "&4Sorry but you have already claimed this head"
+
+
+
+
+#See config.yml for permissions, and other plugin configurations
+#♏ If you have any questions please join my discord, open a support ticket and @Mike3132
+#♏ https://discord.gg/ePQGvQuzG3
+#♏ Thanks for downloading and have a wonderful day
+#♛♛♛♛♛ End of messages.yml ♛♛♛♛♛
+#This is the default messages file.

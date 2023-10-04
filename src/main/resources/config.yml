@@ -1,0 +1,51 @@
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+#                                                💻Scavenger Hunt Config💻
+#                                                   🔥Coded By Mike3132🔥
+#                                                💻Scavenger Hunt Config💻
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+
+Version: 'Version 1.0'
+ConfigVersion: '1.0'
+##### WARNING: DO NOT CHANGE ANYTHING ABOVE THIS LINE IT WILL BREAK THE PLUGIN!#####
+
+#✍✍✍✍✍Permissions✍✍✍✍✍
+#ADMIN PERMISSIONS
+#ScavengerHunt.Command.Hunt -> Permission to use admin only commands
+#ScavengerHunt.Command.Admin -> Permission to enter and exit the admin mode for placing a break heads
+#ScavengerHunt.Command.Admin.Reset -> Permission to reset a target players head count
+
+#PLAYER PERMISSIONS
+#ScavengerHunt.Command.Heads -> Permission to use player commands
+#ScavengerHunt.Command.Heads.Found -> Permission to see how many heads they have found
+
+
+#✍✍✍✍✍Permissions✍✍✍✍✍
+
+#####You can Modify the following how you wish#####
+
+#➳➳➳➳➳ Head Item ➳➳➳➳➳
+#This is the head database id that the head will become, You can find the heads and their id's here > https://minecraft-heads.com
+Hdb-Head-Id: "63573"
+
+#This is the name of the head that will be displayed in the inventory
+Head-Name-Inventory: "&6Spooky Ghost Head"
+
+#This is the lore of the head that will be displayed in the inventory
+Head-Lore-List:
+  - '&eThis is a custom head'
+  - ''
+  - '&2Place this in the world to begin the hunt'
+
+#➳➳➳➳➳ Player Click Options ➳➳➳➳➳
+
+#Should the player receive a message when they click on a head. This message can be configured in the messages.yml file
+Player-Messages-Enabled: true
+
+
+#See messages.yml for all configurable plugin messages
+#♏ If you have any questions please join my discord, open a support ticket and @Mike3132
+#♏ https://discord.gg/ePQGvQuzG3
+#♏ Thanks for downloading and have a wonderful day
+
+#♛♛♛♛♛ END OF CONFIG ♛♛♛♛♛
+#This is the default config file.

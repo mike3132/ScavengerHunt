@@ -1,0 +1,13 @@
+name: ScavengerHunt
+version: '${project.version}'
+main: net.resolutemc.scavengerhunt.ScavengerHunt
+api-version: '1.20'
+depend:
+  - HeadDatabase
+commands:
+  Hunt:
+    description: Main admin command
+    permission: ScavengerHunt.Command.Hunt
+  Heads:
+    description: Main player command
+    permission: ScavengerHunt.Command.Heads
