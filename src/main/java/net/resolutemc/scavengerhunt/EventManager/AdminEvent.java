@@ -21,7 +21,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class AdminEvent implements Listener {
 
-    NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "Scavenger-Head-Key");
+    NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "ScavengerHunt-Head-Key");
     NamespacedKey blockKey = new NamespacedKey(ScavengerHunt.getInstance(), "Block-Key");
 
     @EventHandler

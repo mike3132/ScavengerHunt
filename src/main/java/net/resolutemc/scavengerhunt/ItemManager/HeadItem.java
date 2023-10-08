@@ -40,8 +40,8 @@ public class HeadItem {
         meta.setDisplayName(ColorTranslate.chatColor(headName));
         meta.setLore(lore);
 
-        NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "Scavenger-Head-Key");
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Scavenger-Head-Item");
+        NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "ScavengerHunt-Head-Key");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "ScavengerHunt-Head-Item");
 
         item.setItemMeta(meta);
 

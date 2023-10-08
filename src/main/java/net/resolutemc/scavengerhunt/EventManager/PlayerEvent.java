@@ -1,14 +1,15 @@
 package net.resolutemc.scavengerhunt.EventManager;
 
 import com.jeff_media.customblockdata.CustomBlockData;
+import net.resolutemc.scavengerhunt.Animation.ClaimAnimation;
+import net.resolutemc.scavengerhunt.PDCManager.LocationHolder;
+import net.resolutemc.scavengerhunt.PDCManager.LocationType;
 import net.resolutemc.scavengerhunt.PDCManager.UUIDHolder;
 import net.resolutemc.scavengerhunt.MessageManager.ChatMessage;
 import net.resolutemc.scavengerhunt.PDCManager.BlockUUID;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.SetManager.AdminSet;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,13 +17,19 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class PlayerEvent implements Listener {
 
-
-    boolean playerMessage = ScavengerHunt.getInstance().getConfig().getBoolean("Player-Messages-Enabled");
     NamespacedKey blockKey = new NamespacedKey(ScavengerHunt.getInstance(), "Block-Key");
+    NamespacedKey compassKey = new NamespacedKey(ScavengerHunt.getInstance(), "ScavengerHunt-Compass-Key");
+    boolean playerMessage = ScavengerHunt.getInstance().getConfig().getBoolean("Player-Messages-Enabled");
+    boolean playerCompass = ScavengerHunt.getInstance().getConfig().getBoolean("Compass-Item-Enabled");
+    boolean infiniteCompass = ScavengerHunt.getInstance().getConfig().getBoolean("Infinite-Compass");
+    boolean animationEnabled = ScavengerHunt.getInstance().getConfig().getBoolean("Armorstand-Animation");
+    int distanceToHead = ScavengerHunt.getInstance().getConfig().getInt("Compass-Distance");
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent bpe) {
@@ -69,6 +76,42 @@ public class PlayerEvent implements Listener {
 
             if (!playerMessage) return;
             ChatMessage.sendMessage(player, "Player-Click-Message");
+
+            if (!animationEnabled) return;
+            ClaimAnimation.playerClaim(block, player);
+        }
+
+    }
+
+    // Compass event
+    @EventHandler
+    public void onPlayerClick(PlayerInteractEvent pie) {
+        Player player = pie.getPlayer();
+        World world = player.getWorld();
+
+        LocationHolder holder = world.getPersistentDataContainer().get(blockKey, new LocationType());
+
+        if (!playerCompass) return;
+
+        if (pie.getAction() != Action.RIGHT_CLICK_AIR) return;
+        if (!player.getInventory().getItemInMainHand().getType().equals(Material.COMPASS)) return;
+        if (!player.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer().has(compassKey, PersistentDataType.STRING)) return;
+
+        ItemStack item = player.getInventory().getItemInMainHand();
+        CompassMeta compassMeta = (CompassMeta) item.getItemMeta();
+
+        for (Location location : holder.getLocations()) {
+            double distance = player.getLocation().distance(location);
+
+            if (distance <= distanceToHead) {
+                if (!infiniteCompass) {
+                    item.setAmount(item.getAmount() -1);
+                }
+                compassMeta.setLodestone(location);
+                compassMeta.setLodestoneTracked(false);
+                item.setItemMeta(compassMeta);
+                ChatMessage.sendMessage(player, "Player-Compass-Head-Near");
+            }
         }
 
     }

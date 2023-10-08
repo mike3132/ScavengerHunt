@@ -1,15 +1,14 @@
 package net.resolutemc.scavengerhunt.CommandManager;
 
+import net.resolutemc.scavengerhunt.ItemManager.CompassItem;
 import net.resolutemc.scavengerhunt.ItemManager.HeadItem;
 import net.resolutemc.scavengerhunt.MessageManager.ChatMessage;
-import net.resolutemc.scavengerhunt.MessageManager.ColorTranslate;
 import net.resolutemc.scavengerhunt.MessageManager.ConsoleMessage;
-import net.resolutemc.scavengerhunt.PDCManager.LocationHolder;
+import net.resolutemc.scavengerhunt.MessageManager.LocationMessage;
 import net.resolutemc.scavengerhunt.PDCManager.LocationType;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.SetManager.AdminSet;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -43,7 +42,7 @@ public class AdminCommands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            ChatMessage.sendMessage(player, "Not-Enough-Args");
+            ChatMessage.sendMessage(player, "Not-Enough-Args-Admin");
             return false;
         }
 
@@ -72,11 +71,9 @@ public class AdminCommands implements CommandExecutor {
             player.getInventory().addItem(head);
             return false;
         }
-        /*
-        TODO: Make this location print look nice, and possibly a placeholder
-         */
-        if (args[0].equalsIgnoreCase("List")) {
-            if (!player.hasPermission("ScavengerHunt.Command.Admin.List")) {
+
+        if (args[0].equalsIgnoreCase("Placed")) {
+            if (!player.hasPermission("ScavengerHunt.Command.Admin.Placed")) {
                 ChatMessage.sendMessage(player, "Admin-Head-List-Permission");
                 return false;
             }
@@ -86,11 +83,7 @@ public class AdminCommands implements CommandExecutor {
                 ChatMessage.sendMessage(player, "Admin-No-Heads");
                 return false;
             }
-            LocationHolder holder =  world.getPersistentDataContainer().get(blockKey, new LocationType());
-
-            for (Location location : holder.getLocations()) {
-                player.sendMessage(ColorTranslate.chatColor("&2Locations") + location.toString());
-            }
+            LocationMessage.sendMessage(world, player);
             return false;
         }
 
@@ -122,6 +115,10 @@ public class AdminCommands implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("Amount")) {
+            if (!player.hasPermission("ScavengerHunt.Command.Admin.ListOther")) {
+                ChatMessage.sendMessage(player, "Admin-Head-ListOther-Permission");
+                return true;
+            }
             if (args.length < 2) {
                 ChatMessage.sendMessage(player, "Not-Enough-Args");
                 return false;
@@ -136,7 +133,7 @@ public class AdminCommands implements CommandExecutor {
             TODO: Make a line in the messages.yml for this
              */
             if (!target.getPersistentDataContainer().has(blockKey, PersistentDataType.INTEGER)) {
-                player.sendMessage(target.getName() + " Has not found any heads");
+                ChatMessage.sendPlaceholderMessage(player, "Admin-Head-ListOther-NeverClaimed-Message", target.getName());
                 return false;
             }
             player.sendMessage(target.getName() + " Has claimed " + target.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER) + " heads");
@@ -144,11 +141,21 @@ public class AdminCommands implements CommandExecutor {
         }
 
         /*
-        TODO: REMOVE THIS AFTER DEV TESTING
+        TODO:Make this a permission check and able to be ran by console
          */
-        if (args[0].equalsIgnoreCase("Test")) {
-            player.sendMessage("Admin commands are working");
+        if (args[0].equalsIgnoreCase("Compass")) {
+            CompassItem compassItem = new CompassItem();
+            ItemStack compass = compassItem.getCompass();
+            player.getInventory().addItem(compass);
+            player.sendMessage("Head given placeholder");
             return false;
+        }
+        /*
+        TODO: Make this work
+         */
+        if (args[0].equalsIgnoreCase("Reload")) {
+            ScavengerHunt.getInstance().reloadConfig();
+            player.sendMessage("Reloaded config placeholder");
         }
 
         return false;

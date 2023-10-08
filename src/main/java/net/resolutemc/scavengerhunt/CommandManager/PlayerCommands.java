@@ -31,7 +31,7 @@ public class PlayerCommands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            ChatMessage.sendMessage(player, "Not-Enough-Args");
+            ChatMessage.sendMessage(player, "Not-Enough-Args-Player");
             return false;
         }
 
@@ -42,20 +42,13 @@ public class PlayerCommands implements CommandExecutor {
             }
 
             if (!player.getPersistentDataContainer().has(blockKey, PersistentDataType.INTEGER)) {
-                player.sendMessage("You have not found any heads");
+                ChatMessage.sendMessage(player, "Player-List-NeverClaimed-Message");
                 return false;
             }
             player.sendMessage("You have claimed " + player.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER));
             return false;
         }
 
-        /*
-        TODO: REMOVE THIS AFTER DEV TESTING
-         */
-        if (args[0].equalsIgnoreCase("Test")) {
-            player.sendMessage("Player commands are working");
-            return false;
-        }
 
         return false;
     }

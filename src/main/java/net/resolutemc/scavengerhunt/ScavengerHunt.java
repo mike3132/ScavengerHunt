@@ -18,7 +18,6 @@ public final class ScavengerHunt extends JavaPlugin {
         INSTANCE = this;
         // Plugin startup logic
 
-        // Write a check and message for if head database is installed on the server.
         getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&2Enabled"));
 
         // Command loaders

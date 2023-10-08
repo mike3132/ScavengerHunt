@@ -13,10 +13,13 @@ ConfigVersion: '1.0'
 #ScavengerHunt.Command.Hunt -> Permission to use admin only commands
 #ScavengerHunt.Command.Admin -> Permission to enter and exit the admin mode for placing a break heads
 #ScavengerHunt.Command.Admin.Reset -> Permission to reset a target players head count
+#ScavengerHunt.Command.Admin.Placed -> Permission to list all heads in the current world
+#ScavengerHunt.Command.Admin.ListOther -> Permission to view the amount of heads target player has found
 
 #PLAYER PERMISSIONS
 #ScavengerHunt.Command.Heads -> Permission to use player commands
 #ScavengerHunt.Command.Heads.Found -> Permission to see how many heads they have found
+#ScavengerHunt.Command.Heads.Near -> Permission to see if there is any heads placed nearby the player
 
 
 #✍✍✍✍✍Permissions✍✍✍✍✍
@@ -36,8 +39,38 @@ Head-Lore-List:
   - ''
   - '&2Place this in the world to begin the hunt'
 
-#➳➳➳➳➳ Player Click Options ➳➳➳➳➳
+#➳➳➳➳➳ Compass Item ➳➳➳➳➳
+#Should we enable the custom compass item
+Compass-Item-Enabled: true
 
+#Should the compass have uses?
+#If this is enabled when a player clicks a compass it will remove 1 custom compass from their inventory stack
+Infinite-Compass: true
+
+#This is the distance to the nearest head a player needs to be for the compass to work
+Compass-Distance: 5
+
+#This is the name of the compass item
+Compass-Name: "&5Head Finder"
+
+#This is the lore of the compass (You need to manually set the amount of blocks the compass works with in the lore)
+Compass-Lore-List:
+  - '&eRight click this compass to find nearby heads'
+  - ''
+  - '&2Only works if you are within 5 blocks of a head'
+
+#➳➳➳➳➳ Armorstand ➳➳➳➳➳
+#Should we spawn an armorstand when the player claims a head
+Armorstand-Animation: true
+
+#Should we play a sound when the player claims a head
+Armorstand-Sound: true
+
+#This is the message that shows above the armorstand when the animation plays and is enabled
+Armorstand-Message: "&6Spooky"
+
+
+#➳➳➳➳➳ Player Click Options ➳➳➳➳➳
 #Should the player receive a message when they click on a head. This message can be configured in the messages.yml file
 Player-Messages-Enabled: true
 

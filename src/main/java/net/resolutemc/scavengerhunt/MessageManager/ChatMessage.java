@@ -16,14 +16,12 @@ public class ChatMessage {
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 
-
-    // May not need
-    //public static void sendPlaceholderMessage(Player player, String key, String target) {
-    //    File messagesConfig = new File(ScavengerHunt.getInstance().getDataFolder(), "messages.yml");
-    //    YamlConfiguration configMessages = YamlConfiguration.loadConfiguration(messagesConfig);
-    //    String message = configMessages.getString("Messages.Prefix") + configMessages.getString("Messages." + key);
-    //    message = message.replace("%playerName%", target);
-    //    player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
-    //}
+    public static void sendPlaceholderMessage(Player player, String key, String target) {
+        File messagesConfig = new File(ScavengerHunt.getInstance().getDataFolder(), "messages.yml");
+        YamlConfiguration configMessages = YamlConfiguration.loadConfiguration(messagesConfig);
+        String message = configMessages.getString("Messages.Prefix") + configMessages.getString("Messages." + key);
+        message = message.replace("%playerName%", target);
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+    }
 
 }

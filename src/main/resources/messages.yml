@@ -16,22 +16,21 @@ Messages:
   Prefix: '&6Scavenger &eHunt &7> '
 
   #➳➳➳➳➳ Console Messages ➳➳➳➳➳
-  #Players only command
-  Player-Only: '&4ERROR: &cYou must be a player to use this command'
-
-
-  #♢♢♢♢♢ Admin Messages ♢♢♢♢♢
-  #Sent if you use commands from console (All commands are designed to be ran in game as the player)
+  #Sent if you use commands from console (All commands are designed to be run in game as the player)
   Console-Not-Player: "&4ERROR: &cYou must be a player to use this command"
 
-  #Not enough command arguments when using /hunt
-  Not-Enough-Args: "&4ERROR: &cYou did not supply enough command arguments"
+  #♢♢♢♢♢ Admin Messages ♢♢♢♢♢
+  #Not enough command arguments when using a command
+  Not-Enough-Args-Admin: "&4ERROR: &cYou did not supply enough command arguments"
 
   #If the player does not have permission to use the admin command for listing all heads in their current world
   Admin-Head-List-Permission: "&4ERROR: &cYou do not have permission to list all heads in this world"
 
   #If the player does not have permission to use the admin command for resetting another players head count
   Admin-Head-Reset-Permission: "&4ERROR: &cYou do not have permission to reset other players heads"
+
+  #If the player does not have permission to use the admin command for listing another players head count
+  Admin-Head-ListOther-Permission: "&4ERROR: &cYou do not have permission to list another players heads"
 
   #If the player does not have permission to enter admin mode they will be sent this message
   No-Admin-Mode-Permission: "&4ERROR: &cYou do not have permission to enter admin mode"
@@ -57,8 +56,16 @@ Messages:
   #The message that is sent if the target player is not found
   Admin-Target-Not-Found: "&4ERROR: &cThis is not a valid player"
 
+  #The message that is sent if the target player has never claimed any heads
+  Admin-Head-ListOther-NeverClaimed-Message: "&3%playerName% &6Has not found any heads"
+
+  #The header message that is sent when an admin looks up all placed heads
+  Admin-Head-List-Header: "&aThis is a list of all heads placed in your current world"
 
   #➳➳➳➳➳ Player Messages ➳➳➳➳➳
+  #Not enough command arguments when using a command
+  Not-Enough-Args-Player: "&4ERROR: &cYou did not supply enough command arguments"
+
   #The message that is sent if the player does not have permission to use a command
   Player-No-Permission-Message: "&4ERROR: &cYou do not have the correct permission to execute this command"
 
@@ -67,6 +74,12 @@ Messages:
 
   #This is sent to the player if they have already claimed the head
   Player-Already-Claimed: "&4Sorry but you have already claimed this head"
+
+  #This is sent if the player has never found any heads
+  Player-List-NeverClaimed-Message: "&4You have not found any heads"
+
+  #This is the message that is sent to the player when they use the compass and there is a head nearby
+  Player-Compass-Head-Near: "&2There is a head nearby, Follow the compass"
 
 
 
