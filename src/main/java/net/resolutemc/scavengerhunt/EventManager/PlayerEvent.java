@@ -7,6 +7,7 @@ import net.resolutemc.scavengerhunt.PDCManager.LocationType;
 import net.resolutemc.scavengerhunt.PDCManager.UUIDHolder;
 import net.resolutemc.scavengerhunt.MessageManager.ChatMessage;
 import net.resolutemc.scavengerhunt.PDCManager.BlockUUID;
+import net.resolutemc.scavengerhunt.RewardManager.ClaimReward;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.SetManager.AdminSet;
 import org.bukkit.*;
@@ -31,6 +32,7 @@ public class PlayerEvent implements Listener {
     boolean animationEnabled = ScavengerHunt.getInstance().getConfig().getBoolean("Armorstand-Animation");
     int distanceToHead = ScavengerHunt.getInstance().getConfig().getInt("Compass-Distance");
 
+    // Block break event
     @EventHandler
     public void onBlockBreak(BlockBreakEvent bpe) {
         Player player = bpe.getPlayer();
@@ -45,7 +47,7 @@ public class PlayerEvent implements Listener {
         }
     }
 
-
+    // Block click event
     @EventHandler
     public void onPlayerLeftClick(PlayerInteractEvent pie) {
         Player player = pie.getPlayer();
@@ -74,11 +76,15 @@ public class PlayerEvent implements Listener {
                     player.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER) + 1);
 
 
+
             if (!playerMessage) return;
             ChatMessage.sendMessage(player, "Player-Click-Message");
 
             if (!animationEnabled) return;
             ClaimAnimation.playerClaim(block, player);
+
+            ClaimReward.everyHeadCommand(player);
+            ClaimReward.allHeadsFoundCommand(player.getWorld(), player);
         }
 
     }

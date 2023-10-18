@@ -14,11 +14,9 @@ import org.bukkit.entity.Player;
 
 public class LocationMessage {
 
-
     private static String locationToString(Location location) {
         return location.getWorld().getName() + "," + location.getX() + "," + location.getY() + "," + location.getZ();
     }
-
 
     public static void sendMessage(World world, Player player) {
         NamespacedKey blockKey = new NamespacedKey(ScavengerHunt.getInstance(), "Block-Key");

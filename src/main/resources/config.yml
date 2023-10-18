@@ -20,9 +20,13 @@ ConfigVersion: '1.0'
 #ScavengerHunt.Command.Heads -> Permission to use player commands
 #ScavengerHunt.Command.Heads.Found -> Permission to see how many heads they have found
 #ScavengerHunt.Command.Heads.Near -> Permission to see if there is any heads placed nearby the player
-
-
 #✍✍✍✍✍Permissions✍✍✍✍✍
+
+#✍✍✍✍✍Placeholders✍✍✍✍✍
+#These can be use anywhere outside the plugin, including in a playerlist or scoreboard plugin.
+#%ScavengerHunt_Heads_Found% -> Shows the player how many heads that they have found
+#%ScavengerHunt_Heads_Total_World% -> Shows the player the total amount of placed heads in their current world
+#✍✍✍✍✍Placeholders✍✍✍✍✍
 
 #####You can Modify the following how you wish#####
 
@@ -70,9 +74,29 @@ Armorstand-Sound: true
 Armorstand-Message: "&6Spooky"
 
 
-#➳➳➳➳➳ Player Click Options ➳➳➳➳➳
+#➳➳➳➳➳ Player Options ➳➳➳➳➳
 #Should the player receive a message when they click on a head. This message can be configured in the messages.yml file
 Player-Messages-Enabled: true
+
+#Should we give a reward for every head a player clicks?
+EveryClickRewardBoolean: true
+
+#What is the reward we should give? (Please use your /give command syntax)
+EveryClickReward:
+  - "broadcast %playerName% &2found a head"
+  - "give %playerName% stone 1"
+  - "give %playerName% diamond 3"
+
+
+#Should we run a command when a player has found all the heads?
+AllHeadsFoundBoolean: true
+
+#What commands should be run when a player finds all the heads
+AllHeadsFoundReward:
+  - "broadcast %playerName% &4Has found all the heads"
+  - "give %playerName% beacon 1"
+  - "give %playerName% netherite_block 64"
+
 
 
 #See messages.yml for all configurable plugin messages

@@ -62,6 +62,9 @@ Messages:
   #The header message that is sent when an admin looks up all placed heads
   Admin-Head-List-Header: "&aThis is a list of all heads placed in your current world"
 
+  #The message that tells the admin how many total heads are placed in their current world
+  Admin-Head-Total-World: "&6There is a total of &b%ScavengerHunt_Heads_Total_World% &6in this world"
+
   #➳➳➳➳➳ Player Messages ➳➳➳➳➳
   #Not enough command arguments when using a command
   Not-Enough-Args-Player: "&4ERROR: &cYou did not supply enough command arguments"
@@ -80,6 +83,10 @@ Messages:
 
   #This is the message that is sent to the player when they use the compass and there is a head nearby
   Player-Compass-Head-Near: "&2There is a head nearby, Follow the compass"
+
+  #This is the message that is sent to the player when they use /heads found
+  #(It tells them how many heads they have found in their current world)
+  Player-Message-Head-Found-Amount: "&2You have claimed &a%ScavengerHunt_Heads_Found% &2heads"
 
 
 

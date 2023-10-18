@@ -45,7 +45,8 @@ public class PlayerCommands implements CommandExecutor {
                 ChatMessage.sendMessage(player, "Player-List-NeverClaimed-Message");
                 return false;
             }
-            player.sendMessage("You have claimed " + player.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER));
+            String amount = String.valueOf(player.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER));
+            ChatMessage.sendHeadsFoundPlaceholderMessage(player, "Player-Message-Head-Found-Amount", amount);
             return false;
         }
 

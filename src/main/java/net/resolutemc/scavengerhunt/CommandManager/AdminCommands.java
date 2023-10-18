@@ -5,12 +5,11 @@ import net.resolutemc.scavengerhunt.ItemManager.HeadItem;
 import net.resolutemc.scavengerhunt.MessageManager.ChatMessage;
 import net.resolutemc.scavengerhunt.MessageManager.ConsoleMessage;
 import net.resolutemc.scavengerhunt.MessageManager.LocationMessage;
+import net.resolutemc.scavengerhunt.PDCManager.LocationHolder;
 import net.resolutemc.scavengerhunt.PDCManager.LocationType;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.SetManager.AdminSet;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -133,7 +132,7 @@ public class AdminCommands implements CommandExecutor {
             TODO: Make a line in the messages.yml for this
              */
             if (!target.getPersistentDataContainer().has(blockKey, PersistentDataType.INTEGER)) {
-                ChatMessage.sendPlaceholderMessage(player, "Admin-Head-ListOther-NeverClaimed-Message", target.getName());
+                ChatMessage.sendPlayerPlaceholderMessage(player, "Admin-Head-ListOther-NeverClaimed-Message", target.getName());
                 return false;
             }
             player.sendMessage(target.getName() + " Has claimed " + target.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER) + " heads");
@@ -157,6 +156,15 @@ public class AdminCommands implements CommandExecutor {
             ScavengerHunt.getInstance().reloadConfig();
             player.sendMessage("Reloaded config placeholder");
         }
+
+        if (args[0].equalsIgnoreCase("Total")) {
+            LocationHolder holder =  player.getPlayer().getWorld().getPersistentDataContainer().get(blockKey, new LocationType());
+            String amount = String.valueOf(holder.getLocations().size());
+            ChatMessage.sendHeadsTotalPlacedPlaceholderMessage(player, "Admin-Head-Total-World", amount);
+            return false;
+        }
+
+
 
         return false;
     }

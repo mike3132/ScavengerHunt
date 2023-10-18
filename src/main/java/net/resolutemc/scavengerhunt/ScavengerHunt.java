@@ -6,6 +6,7 @@ import net.resolutemc.scavengerhunt.ConfigManager.ConfigCreator;
 import net.resolutemc.scavengerhunt.EventManager.AdminEvent;
 import net.resolutemc.scavengerhunt.EventManager.PlayerEvent;
 import net.resolutemc.scavengerhunt.MessageManager.ColorTranslate;
+import net.resolutemc.scavengerhunt.PlaceholderAPI.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,6 +19,15 @@ public final class ScavengerHunt extends JavaPlugin {
         INSTANCE = this;
         // Plugin startup logic
 
+        // Placeholder api hook
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&4ERROR: &cPlaceholder API not found disabling"));
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+        new PlaceholderAPI().register();
+
+        // Plugin enabled message
         getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&2Enabled"));
 
         // Command loaders
@@ -32,6 +42,7 @@ public final class ScavengerHunt extends JavaPlugin {
         ConfigCreator.MESSAGES.create();
         saveDefaultConfig();
         getConfig();
+
 
     }
 
