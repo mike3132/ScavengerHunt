@@ -1,0 +1,37 @@
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+#                                                💻Scavenger Hunt Info💻
+#                                                   🔥Coded By Mike3132🔥
+#                                                💻Scavenger Hunt Info💻
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+
+#This is not something the plugin relies on.
+#It's just a place for me to write all the plugin commands
+#It seemed better than having them in discord.
+#This will be removed if / when I put this on spigot
+
+#✍✍✍✍✍Placeholders✍✍✍✍✍
+#These can be use anywhere outside the plugin, including in a playerlist or scoreboard plugin, or anything that supports placeholder api
+#%ScavengerHunt_Heads_Found% -> Shows the player how many heads that they have found
+#%ScavengerHunt_Heads_Total_World% -> Shows the player the total amount of placed heads in their current world
+#✍✍✍✍✍Placeholders✍✍✍✍✍
+
+#✍✍✍✍ Admin commands.✍✍✍✍
+#All admin commands start with /hunt
+
+#Hunt Reload -> Reloads config
+#Hunt Admin -> Enables or Disables admin mode
+#Hunt Placed -> Tells you the locations of all placed heads in the current world
+#Hunt Total -> Tells you the total amount of placed heads in the current world
+#Hunt Compass <playerName> -> Gives the target player the head finder compass
+#Hunt Amount <playerName> -> Tells you the amount of heads that the target player has found
+#Hunt Reset <playerName> -> Resets the target players amount of claimed heads
+#Clear -> Clears all placed heads in the world
+#✍✍✍✍ Admin commands.✍✍✍✍
+
+
+
+#✍✍✍✍ Player commands.✍✍✍✍
+#All player commands start with /heads
+#Heads found -> Tells the player the amount of heads they have found
+#Heads total -> Tells the player the total amount of heads in their current world
+#✍✍✍✍ Player commands.✍✍✍✍

@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public enum ConfigCreator {
 
-    MESSAGES;
+    MESSAGES, INFO;
 
     public File getFile() {
         return new File(ScavengerHunt.getInstance().getDataFolder(), this.toString().toLowerCase(Locale.ROOT) + ".yml");

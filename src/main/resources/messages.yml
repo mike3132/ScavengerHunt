@@ -112,6 +112,9 @@ Messages:
   #The message that is sent to the target player when they are given the compass item
   Admin-Compass-Item-Given-Player: "&2You have been given a &6ScavengerHunt &eCompass"
 
+  #The message that tells the player how many total heads are placed in their current world
+  Player-Head-Total-World: "&6There is a total of &b%ScavengerHunt_Heads_Total_World% &6in this world"
+
 
 
 

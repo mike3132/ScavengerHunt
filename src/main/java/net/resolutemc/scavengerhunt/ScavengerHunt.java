@@ -40,6 +40,7 @@ public final class ScavengerHunt extends JavaPlugin {
 
         // Config loaders
         ConfigCreator.MESSAGES.create();
+        ConfigCreator.INFO.create();
         saveDefaultConfig();
         getConfig();
 

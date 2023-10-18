@@ -22,14 +22,8 @@ ConfigVersion: '1.0'
 #PLAYER PERMISSIONS
 #ScavengerHunt.Command.Heads -> Permission to use player commands
 #ScavengerHunt.Command.Heads.Found -> Permission to see how many heads they have found
-#ScavengerHunt.Command.Heads.Near -> Permission to see if there is any heads placed nearby the player
+#ScavengerHunt.Command.Heads.Total -> Permission to see the total amount of heads in their current world
 #✍✍✍✍✍Permissions✍✍✍✍✍
-
-#✍✍✍✍✍Placeholders✍✍✍✍✍
-#These can be use anywhere outside the plugin, including in a playerlist or scoreboard plugin.
-#%ScavengerHunt_Heads_Found% -> Shows the player how many heads that they have found
-#%ScavengerHunt_Heads_Total_World% -> Shows the player the total amount of placed heads in their current world
-#✍✍✍✍✍Placeholders✍✍✍✍✍
 
 #####You can Modify the following how you wish#####
 

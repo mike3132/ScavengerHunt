@@ -2,6 +2,8 @@ package net.resolutemc.scavengerhunt.CommandManager;
 
 import net.resolutemc.scavengerhunt.MessageManager.ChatMessage;
 import net.resolutemc.scavengerhunt.MessageManager.ConsoleMessage;
+import net.resolutemc.scavengerhunt.PDCManager.LocationHolder;
+import net.resolutemc.scavengerhunt.PDCManager.LocationType;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
@@ -47,6 +49,16 @@ public class PlayerCommands implements CommandExecutor {
             }
             String amount = String.valueOf(player.getPersistentDataContainer().get(blockKey, PersistentDataType.INTEGER));
             ChatMessage.sendHeadsFoundPlaceholderMessage(player, "Player-Message-Head-Found-Amount", amount);
+            return false;
+        }
+        if (args[0].equalsIgnoreCase("Total")) {
+            if (!player.hasPermission("ScavengerHunt.Command.Heads.Total")) {
+                ChatMessage.sendMessage(player, "Player-No-Permission-Message");
+                return false;
+            }
+            LocationHolder holder = player.getPlayer().getWorld().getPersistentDataContainer().get(blockKey, new LocationType());
+            String amount = String.valueOf(holder.getLocations().size());
+            ChatMessage.sendHeadsTotalPlacedPlaceholderMessage(player, "Player-Head-Total-World", amount);
             return false;
         }
 
