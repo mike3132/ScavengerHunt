@@ -2,6 +2,7 @@ package net.resolutemc.scavengerhunt.MessageManager;
 
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -29,6 +30,7 @@ public class ChatMessage {
         YamlConfiguration configMessages = YamlConfiguration.loadConfiguration(messagesConfig);
         String message = configMessages.getString("Messages.Prefix") + configMessages.getString("Messages." + key);
         message = message.replace("%ScavengerHunt_Heads_Found%", target);
+        message = message.replace("%playerName%", player.getName());
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 

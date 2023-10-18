@@ -13,8 +13,11 @@ ConfigVersion: '1.0'
 #ScavengerHunt.Command.Hunt -> Permission to use admin only commands
 #ScavengerHunt.Command.Admin -> Permission to enter and exit the admin mode for placing a break heads
 #ScavengerHunt.Command.Admin.Reset -> Permission to reset a target players head count
-#ScavengerHunt.Command.Admin.Placed -> Permission to list all heads in the current world
+#ScavengerHunt.Command.Admin.Placed -> Permission to list and teleport to all heads placed in the world
+#ScavengerHunt.Command.Admin.Total -> Permission to list the amount of all heads in the current world
+#ScavengerHunt.Command.Admin.Compass -> Permission to give the compass item
 #ScavengerHunt.Command.Admin.ListOther -> Permission to view the amount of heads target player has found
+#ScavengerHunt.Command.Admin.Clear -> Permission to clear all heads placed in the current world
 
 #PLAYER PERMISSIONS
 #ScavengerHunt.Command.Heads -> Permission to use player commands

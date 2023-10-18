@@ -23,6 +23,9 @@ Messages:
   #Not enough command arguments when using a command
   Not-Enough-Args-Admin: "&4ERROR: &cYou did not supply enough command arguments"
 
+  #The message that is sent if the admin typed something that isn't a valid argument in the command
+  No-Valid-Args-Found: "&4ERROR: &cThat is not a valid command argument"
+
   #If the player does not have permission to use the admin command for listing all heads in their current world
   Admin-Head-List-Permission: "&4ERROR: &cYou do not have permission to list all heads in this world"
 
@@ -31,6 +34,9 @@ Messages:
 
   #If the player does not have permission to use the admin command for listing another players head count
   Admin-Head-ListOther-Permission: "&4ERROR: &cYou do not have permission to list another players heads"
+
+  #If the player does not have permission to use the admin command for clearing all heads in a world
+  Admin-Head-Clear-Permission: "&4ERROR: &cYou do not have permission to clear all heads in the world"
 
   #If the player does not have permission to enter admin mode they will be sent this message
   No-Admin-Mode-Permission: "&4ERROR: &cYou do not have permission to enter admin mode"
@@ -59,11 +65,26 @@ Messages:
   #The message that is sent if the target player has never claimed any heads
   Admin-Head-ListOther-NeverClaimed-Message: "&3%playerName% &6Has not found any heads"
 
+  #The message that is sent telling the admin how many heads the target player has claimed
+  Admin-Head-ListOther-Amount-Claimed: "&3%playerName% &2Has found &b%ScavengerHunt_Heads_Found%"
+
   #The header message that is sent when an admin looks up all placed heads
   Admin-Head-List-Header: "&aThis is a list of all heads placed in your current world"
 
   #The message that tells the admin how many total heads are placed in their current world
   Admin-Head-Total-World: "&6There is a total of &b%ScavengerHunt_Heads_Total_World% &6in this world"
+
+  #The message that is sent to the admin when they give a compass item
+  Admin-Compass-Item-Given-Admin: "&bYou have given a compass item to %playerName%"
+
+  #The message that is sent if the target player has never claimed any heads
+  Admin-Head-Reset-NeverClaimed-Message: "&3%playerName% &6Has not found any heads, unable to reset"
+
+  #The message that is sent to the admin when they reset a players heads
+  Admin-Head-Reset-Admin-Message: "&3Resetting claimed heads for &2%playerName%"
+
+  #The message that is sent to the admin when they clear all placed heads in the world
+  Admin-Head-Clear-Message: "&c&lNow clearing all head data in the world"
 
   #➳➳➳➳➳ Player Messages ➳➳➳➳➳
   #Not enough command arguments when using a command
@@ -87,6 +108,9 @@ Messages:
   #This is the message that is sent to the player when they use /heads found
   #(It tells them how many heads they have found in their current world)
   Player-Message-Head-Found-Amount: "&2You have claimed &a%ScavengerHunt_Heads_Found% &2heads"
+
+  #The message that is sent to the target player when they are given the compass item
+  Admin-Compass-Item-Given-Player: "&2You have been given a &6ScavengerHunt &eCompass"
 
 
 
