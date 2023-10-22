@@ -35,6 +35,7 @@ public class CompassItem {
         meta.setDisplayName(ColorTranslate.chatColor(headName));
         meta.setLore(lore);
 
+
         NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "ScavengerHunt-Compass-Key");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "ScavengerHunt-Compass-Item");
 
