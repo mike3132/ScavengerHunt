@@ -91,6 +91,7 @@ EveryClickRewardBoolean: true
 EveryClickRewardAllBoolean: false
 
 #Should rewards be randomized instead of giving them everything?
+#The randomizer is based on the amount of items in this list, So everything has an equal chance to be given.
 #You must have "EveryClickRewardBoolean" set to true
 #WARNING: This cannot be used with "EveryClickRewardAllBoolean"
 EveryClickRewardRandomBoolean: true
