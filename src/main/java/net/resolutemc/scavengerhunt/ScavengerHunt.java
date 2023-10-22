@@ -1,7 +1,9 @@
 package net.resolutemc.scavengerhunt;
 
 import net.resolutemc.scavengerhunt.CommandManager.AdminCommands;
+import net.resolutemc.scavengerhunt.CommandManager.AdminTabComplete;
 import net.resolutemc.scavengerhunt.CommandManager.PlayerCommands;
+import net.resolutemc.scavengerhunt.CommandManager.PlayerTabComplete;
 import net.resolutemc.scavengerhunt.ConfigManager.ConfigCreator;
 import net.resolutemc.scavengerhunt.EventManager.AdminEvent;
 import net.resolutemc.scavengerhunt.EventManager.PlayerEvent;
@@ -33,6 +35,8 @@ public final class ScavengerHunt extends JavaPlugin {
         // Command loaders
         registerAdminCommand();
         registerPlayerCommand();
+        registerAdminTabComplete();
+        registerPlayerTabComplete();
 
         // Event loaders
         Bukkit.getPluginManager().registerEvents(new AdminEvent(), this);
@@ -57,9 +61,14 @@ public final class ScavengerHunt extends JavaPlugin {
     private void registerAdminCommand() {
         new AdminCommands();
     }
-
     private void registerPlayerCommand() {
         new PlayerCommands();
+    }
+    private void registerAdminTabComplete() {
+        new AdminTabComplete();
+    }
+    private void registerPlayerTabComplete() {
+        new PlayerTabComplete();
     }
 
     // Plugin instance register

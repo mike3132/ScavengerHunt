@@ -75,12 +75,29 @@ Armorstand-Message: "&6Spooky"
 #Should the player receive a message when they click on a head. This message can be configured in the messages.yml file
 Player-Messages-Enabled: true
 
-#Should we give a reward for every head a player clicks?
+#Should there be a console command for every head a player clicks?
+#This is separate from the reward system. (This is intended for a broadcast)
+EveryClickBroadcast: true
+
+#The message that is sent everytime a player clicks a head
+EveryClickBroadcastMessage: "broadcast %playerName% &2found a head"
+
+#Shouls the player receive a reward for every head they click?
 EveryClickRewardBoolean: true
+
+#Should the player get all the rewards when they click a head
+#You must have "EveryClickRewardBoolean" set to true
+#WARNING: This cannot be used with "EveryClickRewardRandomBoolean"
+EveryClickRewardAllBoolean: false
+
+#Should rewards be randomized instead of giving them everything?
+#You must have "EveryClickRewardBoolean" set to true
+#WARNING: This cannot be used with "EveryClickRewardAllBoolean"
+EveryClickRewardRandomBoolean: true
 
 #What is the reward we should give? (Please use your /give command syntax)
 EveryClickReward:
-  - "broadcast %playerName% &2found a head"
+  - "give %playerName% stick 5"
   - "give %playerName% stone 1"
   - "give %playerName% diamond 3"
 

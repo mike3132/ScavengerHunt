@@ -84,6 +84,7 @@ public class PlayerEvent implements Listener {
             ClaimAnimation.playerClaim(block, player);
 
             ClaimReward.everyHeadCommand(player);
+            ClaimReward.everHeadRandom(player);
             ClaimReward.allHeadsFoundCommand(player.getWorld(), player);
         }
 
