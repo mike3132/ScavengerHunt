@@ -33,7 +33,6 @@ public class AdminCommands implements CommandExecutor {
             ConsoleMessage.sendMessage(sender, "No-Permission");
             return false;
         }
-        Player player = (Player) sender;
 
         switch (args[0].toUpperCase()) {
             case "RELOAD":
@@ -43,7 +42,8 @@ public class AdminCommands implements CommandExecutor {
                 sender.sendMessage(ColorTranslate.chatColor("&cThis is due to the block data being stored in the world."));
                 sender.sendMessage(ColorTranslate.chatColor("&cPlease restart your server for reloads to take full effect"));
                 break;
-            case "ADMIN":
+            case "ADMIN": {
+                Player player = (Player) sender;
                 if (!player.hasPermission("ScavengerHunt.Command.Admin")) {
                     ChatMessage.sendMessage(player, "No-Admin-Mode-Permission");
                     return false;
@@ -68,7 +68,9 @@ public class AdminCommands implements CommandExecutor {
                 ItemStack head = headItem.getHead();
                 player.getInventory().addItem(head);
                 break;
+            }
             case "PLACED": {
+                Player player = (Player) sender;
                 World world = player.getWorld();
                 if (!player.hasPermission("ScavengerHunt.Command.Admin.Placed")) {
                     ChatMessage.sendMessage(player, "Admin-Head-List-Permission");
@@ -82,6 +84,7 @@ public class AdminCommands implements CommandExecutor {
                 break;
             }
             case "TOTAL": {
+                Player player = (Player) sender;
                 World world = player.getWorld();
                 if (!player.hasPermission("ScavengerHunt.Command.Admin.Total")) {
                     ChatMessage.sendMessage(player, "Admin-Head-List-Permission");
@@ -98,26 +101,27 @@ public class AdminCommands implements CommandExecutor {
             }
             case "COMPASS": {
                 if (args.length < 2) {
-                    ChatMessage.sendMessage(player, "Not-Enough-Args-Admin");
+                    ConsoleMessage.sendMessage(sender, "Not-Enough-Args-Admin");
                     return false;
                 }
-                if (!player.hasPermission("ScavengerHunt.Command.Admin.Compass")) {
-                    ChatMessage.sendMessage(player, "Admin-Head-List-Permission");
+                if (!sender.hasPermission("ScavengerHunt.Command.Admin.Compass")) {
+                    ConsoleMessage.sendMessage(sender, "Admin-Head-List-Permission");
                     return false;
                 }
                 Player target = Bukkit.getPlayer(args[1]);
                 if (target == null) {
-                    ChatMessage.sendMessage(player, "Admin-Target-Not-Found");
+                    ConsoleMessage.sendMessage(sender, "Admin-Target-Not-Found");
                     return false;
                 }
                 CompassItem compassItem = new CompassItem();
                 ItemStack compass = compassItem.getCompass();
                 target.getInventory().addItem(compass);
                 ChatMessage.sendMessage(target, "Admin-Compass-Item-Given-Player");
-                ChatMessage.sendPlayerPlaceholderMessage(player, "Admin-Compass-Item-Given-Admin", target.getName());
+                ConsoleMessage.sendPlayerPlaceholderMessage(sender, "Admin-Compass-Item-Given-Admin", target.getName());
                 break;
             }
             case "AMOUNT": {
+                Player player = (Player) sender;
                 if (args.length < 2) {
                     ChatMessage.sendMessage(player, "Not-Enough-Args-Admin");
                     return false;
@@ -140,7 +144,8 @@ public class AdminCommands implements CommandExecutor {
                 ChatMessage.sendHeadsFoundPlaceholderMessage(target, "Admin-Head-ListOther-Amount-Claimed", amount);
                 break;
             }
-            case "RESET":
+            case "RESET": {
+                Player player = (Player) sender;
                 if (args.length < 2) {
                     ChatMessage.sendMessage(player, "Not-Enough-Args-Admin");
                     return false;
@@ -161,7 +166,9 @@ public class AdminCommands implements CommandExecutor {
                 ChatMessage.sendPlayerPlaceholderMessage(player, "Admin-Head-Reset-Admin-Message", target.getName());
                 target.getPersistentDataContainer().set(blockKey, PersistentDataType.INTEGER, 0);
                 return false;
+            }
             case "CLEAR": {
+                Player player = (Player) sender;
                 World world = player.getWorld();
                 if (!player.hasPermission("ScavengerHunt.Command.Admin.Clear")) {
                     ChatMessage.sendMessage(player, "Admin-Head-Clear-Permission");
@@ -174,7 +181,8 @@ public class AdminCommands implements CommandExecutor {
                 HeadClearMessage.sendClearClickMessage(player);
                 break;
             }
-            case "SCAVENGERHUNTINTERNALCLICKCOMMAND":
+            case "SCAVENGERHUNTINTERNALCLICKCOMMAND": {
+                Player player = (Player) sender;
                 World world = player.getWorld();
                 LocationHolder holder = player.getWorld().getPersistentDataContainer().get(blockKey, new LocationType());
 
@@ -190,9 +198,9 @@ public class AdminCommands implements CommandExecutor {
                 }
                 ChatMessage.sendMessage(player, "Admin-Head-Clear-Message");
                 break;
-
-
+            }
             default:
+                Player player = (Player) sender;
                 ChatMessage.sendMessage(player, "No-Valid-Args-Found");
         }
 
