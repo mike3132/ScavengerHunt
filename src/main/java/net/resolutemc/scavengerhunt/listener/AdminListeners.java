@@ -31,9 +31,6 @@ public class AdminListeners implements Listener {
         this.plugin = plugin;
     }
 
-    NamespacedKey key = new NamespacedKey(ScavengerHunt.getInstance(), "ScavengerHunt-Head-Key");
-    NamespacedKey blockKey = new NamespacedKey(ScavengerHunt.getInstance(), "Block-Key");
-
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
@@ -53,8 +50,8 @@ public class AdminListeners implements Listener {
         ChatMessage.send(player, "Admin-Head-Place");
 
         CustomBlockData blockData = new CustomBlockData(block, ScavengerHunt.getInstance());
-        blockData.set(blockKey, PersistentDataType.BOOLEAN, true);
-        blockData.set(blockKey, new BlockUUIDType(), new UUIDHolder());
+        blockData.set(DataKeys.BLOCK_KEY, PersistentDataType.BOOLEAN, true);
+        blockData.set(DataKeys.BLOCK_KEY, new BlockUUIDType(), new UUIDHolder());
 
         LocationHolder holder = world.getPersistentDataContainer().getOrDefault(
                 DataKeys.BLOCK_KEY,
@@ -88,7 +85,7 @@ public class AdminListeners implements Listener {
 
         if (holder == null || holder.getLocations().isEmpty()) return;
         holder.removeLocation(block.getLocation());
-        world.getPersistentDataContainer().set(blockKey, new LocationType(), holder);
+        world.getPersistentDataContainer().set(DataKeys.BLOCK_KEY, new LocationType(), holder);
     }
 
 }
