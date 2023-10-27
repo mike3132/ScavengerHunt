@@ -34,8 +34,7 @@ public class BlockUUIDType implements PersistentDataType<byte[], UUIDHolder> {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
             return (UUIDHolder) objectInputStream.readObject();
-        }
-        catch (IOException | ClassNotFoundException exception) {
+        } catch (IOException | ClassNotFoundException exception) {
             ScavengerHunt.getInstance().getLogger().warning("Container not found");
         }
 

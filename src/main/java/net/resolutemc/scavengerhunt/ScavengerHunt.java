@@ -1,9 +1,9 @@
 package net.resolutemc.scavengerhunt;
 
-import net.resolutemc.scavengerhunt.listener.AdminListeners;
-import net.resolutemc.scavengerhunt.listener.PlayerListeners;
 import net.resolutemc.scavengerhunt.command.AdminCommands;
 import net.resolutemc.scavengerhunt.hook.Placeholders;
+import net.resolutemc.scavengerhunt.listener.AdminListeners;
+import net.resolutemc.scavengerhunt.listener.PlayerListeners;
 import net.resolutemc.scavengerhunt.manager.DataManager;
 import net.resolutemc.scavengerhunt.manager.ItemManager;
 import net.resolutemc.scavengerhunt.util.ChatMessage;

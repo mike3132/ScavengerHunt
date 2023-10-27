@@ -7,7 +7,6 @@ import net.resolutemc.scavengerhunt.data.holder.LocationHolder;
 import net.resolutemc.scavengerhunt.data.type.LocationType;
 import net.resolutemc.scavengerhunt.util.ChatMessage;
 import net.resolutemc.scavengerhunt.util.StringPlaceholders;
-import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

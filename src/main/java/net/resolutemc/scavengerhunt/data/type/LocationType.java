@@ -34,8 +34,7 @@ public class LocationType implements PersistentDataType<byte[], LocationHolder> 
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
             return (LocationHolder) objectInputStream.readObject();
-        }
-        catch (IOException | ClassNotFoundException exception) {
+        } catch (IOException | ClassNotFoundException exception) {
             ScavengerHunt.getInstance().getLogger().warning("Container not found");
         }
 

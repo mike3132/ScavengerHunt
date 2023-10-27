@@ -13,8 +13,9 @@ public abstract class SubCommand {
 
     /**
      * Get the name of the sub command.
+     *
      * @param sender The person to send the message to.
-     * @param args The arguments of the command.
+     * @param args   The arguments of the command.
      */
     public abstract void execute(CommandSender sender, String[] args);
 

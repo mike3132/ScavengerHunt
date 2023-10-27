@@ -4,26 +4,20 @@ import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.command.api.SubCommand;
 import net.resolutemc.scavengerhunt.command.player.FoundCommand;
 import net.resolutemc.scavengerhunt.command.player.TotalCommand;
-import net.resolutemc.scavengerhunt.data.holder.LocationHolder;
 import net.resolutemc.scavengerhunt.util.ChatMessage;
-import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class PlayerCommands implements TabExecutor {
 
