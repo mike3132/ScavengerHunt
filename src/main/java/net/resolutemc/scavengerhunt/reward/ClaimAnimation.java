@@ -1,4 +1,4 @@
-package net.resolutemc.scavengerhunt.animation;
+package net.resolutemc.scavengerhunt.reward;
 
 import net.resolutemc.scavengerhunt.ScavengerHunt;
 import net.resolutemc.scavengerhunt.util.ChatMessage;

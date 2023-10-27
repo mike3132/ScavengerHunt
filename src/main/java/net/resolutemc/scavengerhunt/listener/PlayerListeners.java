@@ -2,7 +2,7 @@ package net.resolutemc.scavengerhunt.listener;
 
 import com.jeff_media.customblockdata.CustomBlockData;
 import net.resolutemc.scavengerhunt.ScavengerHunt;
-import net.resolutemc.scavengerhunt.animation.ClaimAnimation;
+import net.resolutemc.scavengerhunt.reward.ClaimAnimation;
 import net.resolutemc.scavengerhunt.data.DataKeys;
 import net.resolutemc.scavengerhunt.data.holder.LocationHolder;
 import net.resolutemc.scavengerhunt.data.holder.UUIDHolder;
