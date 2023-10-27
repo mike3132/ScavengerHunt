@@ -1,78 +1,77 @@
 package net.resolutemc.scavengerhunt;
 
-import net.resolutemc.scavengerhunt.CommandManager.AdminCommands;
-import net.resolutemc.scavengerhunt.CommandManager.AdminTabComplete;
-import net.resolutemc.scavengerhunt.CommandManager.PlayerCommands;
-import net.resolutemc.scavengerhunt.CommandManager.PlayerTabComplete;
-import net.resolutemc.scavengerhunt.ConfigManager.ConfigCreator;
-import net.resolutemc.scavengerhunt.EventManager.AdminEvent;
-import net.resolutemc.scavengerhunt.EventManager.PlayerEvent;
-import net.resolutemc.scavengerhunt.MessageManager.ColorTranslate;
-import net.resolutemc.scavengerhunt.PlaceholderAPI.PlaceholderAPI;
+import net.resolutemc.scavengerhunt.listener.AdminListeners;
+import net.resolutemc.scavengerhunt.listener.PlayerListeners;
+import net.resolutemc.scavengerhunt.command.AdminCommands;
+import net.resolutemc.scavengerhunt.hook.Placeholders;
+import net.resolutemc.scavengerhunt.manager.DataManager;
+import net.resolutemc.scavengerhunt.manager.ItemManager;
+import net.resolutemc.scavengerhunt.util.ChatMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public final class ScavengerHunt extends JavaPlugin {
 
-    private static ScavengerHunt INSTANCE;
+    private static ScavengerHunt instance;
+    private DataManager dataManager;
+    private ItemManager itemManager;
 
     @Override
     public void onEnable() {
-        INSTANCE = this;
-        // Plugin startup logic
+        instance = this;
 
-        // Placeholder api hook
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
-            getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&4ERROR: &cPlaceholder API not found disabling"));
-            Bukkit.getPluginManager().disablePlugin(this);
-            return;
+        // Load the config files.
+        this.getConfig(); // config.yml
+        ChatMessage.reload(); // messages.yml
+
+        // Load the info file.
+        final File infoFile = new File(getDataFolder(), "info.yml");
+        if (!infoFile.exists()) {
+            this.saveResource("info.yml", false);
         }
-        new PlaceholderAPI().register();
 
-        // Plugin enabled message
-        getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&2Enabled"));
+        // Register Managers
+        this.dataManager = new DataManager(this);
+        this.itemManager = new ItemManager(this);
 
-        // Command loaders
-        registerAdminCommand();
-        registerPlayerCommand();
-        registerAdminTabComplete();
-        registerPlayerTabComplete();
+        // Register Commands
+        new AdminCommands(this);
 
-        // Event loaders
-        Bukkit.getPluginManager().registerEvents(new AdminEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerEvent(), this);
+        // Register Events
+        Bukkit.getPluginManager().registerEvents(new AdminListeners(this), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerListeners(this), this);
 
-        // Config loaders
-        ConfigCreator.MESSAGES.create();
-        ConfigCreator.INFO.create();
-        saveDefaultConfig();
-        getConfig();
+        // Register PlaceholderAPI
+        new Placeholders().register();
+        this.getServer().getConsoleSender().sendMessage(ChatMessage.color("&2Enabled"));
+    }
 
-
+    /**
+     * Reload the config files.
+     */
+    public void reload() {
+        this.reloadConfig();
+        ChatMessage.reload();
+        this.itemManager.reload();
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
-        getServer().getConsoleSender().sendMessage(ColorTranslate.chatColor("&4Disabled"));
+        this.getServer().getConsoleSender().sendMessage(ChatMessage.color("&4Disabled"));
     }
 
-    // Command registers
-    private void registerAdminCommand() {
-        new AdminCommands();
-    }
-    private void registerPlayerCommand() {
-        new PlayerCommands();
-    }
-    private void registerAdminTabComplete() {
-        new AdminTabComplete();
-    }
-    private void registerPlayerTabComplete() {
-        new PlayerTabComplete();
-    }
-
-    // Plugin instance register
     public static ScavengerHunt getInstance() {
-        return INSTANCE;
+        return instance;
     }
+
+    public DataManager getDataManager() {
+        return dataManager;
+    }
+
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
+
 }
